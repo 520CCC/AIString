@@ -18,12 +18,12 @@ plugins {
 }
 
 group = 'com.github.520CCC'
-version = '1.0.0'
+version = '1.0.2'
 
 gradlePlugin {
     plugins {
         aiStringPlugin {
-            id = 'com.github.520CCC.aistring'
+            id = 'aistring'
             implementationClass = 'com.doctor.aistring.AiStringPlugin'
         }
     }
@@ -34,8 +34,8 @@ publishing {
         mavenJava(MavenPublication) {
             from components.java
             groupId = 'com.github.520CCC'
-            artifactId = 'aistring-plugin'
-            version = '1.0.0'
+            artifactId = 'aistring'
+            version = '1.0.2'
         }
     }
 }

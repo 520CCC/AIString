@@ -8,7 +8,8 @@
 ```groovy
 dependencyResolutionManagement {
     repositories {
-        // ... 其他仓库
+        google()
+        mavenCentral()
         maven { url 'https://jitpack.io' }
     }
 }
@@ -16,16 +17,30 @@ dependencyResolutionManagement {
 
 2. 在应用模块的 `build.gradle` 中添加：
 ```groovy
-plugins {
-    id 'com.github.520CCC.aistring' version '1.0.1'
+buildscript {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+    dependencies {
+        classpath 'com.github.520CCC:aistring:1.0.2'
+    }
 }
 
+apply plugin: 'aistring'
+
 dependencies {
-    implementation 'com.github.520CCC.AIString:runtime:1.0.1'
+    implementation 'com.github.520CCC.AIString:runtime:1.0.2'
 }
 ```
 
 完成！你的应用中所有字符串都会在编译时自动加密。
+
+## 常见问题
+
+1. 如果遇到依赖找不到的错误，请确保：
+   - 已添加 JitPack 仓库
+   - 版本号正确（当前最新版本：1.0.2）
+   - 尝试刷新依赖：`./gradlew build --refresh-dependencies`
 
 ## 示例
 
