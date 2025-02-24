@@ -17,9 +17,16 @@ plugins {
     id 'maven-publish'
 }
 
-allprojects {
-    group = 'com.github.520CCC'
-    version = '1.0.0'
+group = 'com.github.520CCC'
+version = '1.0.0'
+
+gradlePlugin {
+    plugins {
+        aiStringPlugin {
+            id = 'com.github.520CCC.aistring'
+            implementationClass = 'com.doctor.aistring.AiStringPlugin'
+        }
+    }
 }
 
 publishing {
@@ -33,13 +40,3 @@ publishing {
     }
 }
 
-gradlePlugin {
-    plugins {
-        aiStringPlugin {
-            id = 'com.github.520CCC.aistring'
-            implementationClass = 'com.doctor.aistring.AiStringPlugin'
-        }
-    }
-}
-
-// 不需要任何额外依赖，因为用户项目中已经包含了所需的库

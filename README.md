@@ -17,7 +17,11 @@ dependencyResolutionManagement {
 2. 在应用模块的 `build.gradle` 中添加：
 ```groovy
 plugins {
-    id 'com.github.520CCC.aistring' version '1.0.0'
+    id 'com.github.520CCC.aistring' version '1.0.1'
+}
+
+dependencies {
+    implementation 'com.github.520CCC.AIString:runtime:1.0.1'
 }
 ```
 
@@ -54,11 +58,19 @@ class MainActivity : AppCompatActivity() {
 - 支持 Android API 21+
 - 自动加密所有非空字符串
 - 无需任何配置，一行代码搞定
+- 支持混淆
+
+## 混淆配置
+
+如果您开启了混淆，请在 `proguard-rules.pro` 中添加：
+```proguard
+-keep class com.doctor.aistring.** { *; }
+```
 
 ## License
 
 ```
-Copyright 2024 Your Name
+Copyright 2024 520CCC
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

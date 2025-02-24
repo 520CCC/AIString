@@ -17,7 +17,7 @@ object AiString {
     private const val algorithm = "AES/ECB/PKCS5Padding"
     
     @Keep
-    private const val KEY: String = "6a7934426925a01eb384dce1f6fef4989f12b241559a1bd40e8a70fe7461ea3a" // 这里会被替换为十六进制字符串
+    private const val KEY: String = "your_secret_key_here" // 16, 24, or 32 bytes for AES-128, AES-192, or AES-256
 
     private val decryptCache = ConcurrentHashMap<String, String>()
     
@@ -75,5 +75,20 @@ object AiString {
     @JvmStatic
     fun decrypt(base64Str: String): String {
         return decrypt(base64Str, KEY)
+    }
+
+    fun decrypt(encryptedString: String): String {
+        try {
+            val cipher = Cipher.getInstance("AES/ECB/PKCS5Padding")
+            val secretKey = SecretKeySpec(KEY.toByteArray(), "AES")
+            cipher.init(Cipher.DECRYPT_MODE, secretKey)
+            
+            val encryptedBytes = Base64.decode(encryptedString, Base64.DEFAULT)
+            val decryptedBytes = cipher.doFinal(encryptedBytes)
+            return String(decryptedBytes)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return encryptedString
+        }
     }
 }
