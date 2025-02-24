@@ -1,0 +1,39 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.2.0'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.0'
+    }
+}
+
+plugins {
+    id 'java-gradle-plugin'
+    id 'org.jetbrains.kotlin.jvm' version '1.9.0'
+    id 'maven-publish'
+}
+
+group = 'com.github.doctorgero'
+version = '1.0.0'
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+gradlePlugin {
+    plugins {
+        aiStringPlugin {
+            id = 'com.github.doctorgero.aistring'
+            implementationClass = 'com.doctor.aistring.AiStringPlugin'
+        }
+    }
+}
+
+// 不需要任何额外依赖，因为用户项目中已经包含了所需的库

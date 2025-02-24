@@ -1,0 +1,41 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'org.jetbrains.kotlin.jvm' version '1.9.0'
+}
+
+// 添加仓库配置
+repositories {
+    gradlePluginPortal()
+    mavenCentral()
+    google()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0"
+    // 添加 Android Gradle Plugin 依赖
+    implementation "com.android.tools.build:gradle:8.2.0"
+    // 添加 ASM 依赖
+    implementation "org.ow2.asm:asm:9.6"
+    implementation "org.ow2.asm:asm-commons:9.6"
+    // 添加 R8 依赖
+    implementation "com.android.tools:r8:8.2.33"
+}
+
+// 使用 Java 17
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+kotlin {
+    jvmToolchain(17)
+}
+
+gradlePlugin {
+    plugins {
+        aiStringPlugin {
+            id = 'com.doctor.aistring'  // 改成你的包名
+            implementationClass = 'com.doctor.aistring.AiStringPlugin'
+        }
+    }
+}

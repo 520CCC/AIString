@@ -1,0 +1,9 @@
+-keep class com.doctor.aistring.AiString { *; }
+-keepclassmembers class com.doctor.aistring.AiString { *; }
+-keepnames class com.doctor.aistring.AiString
+-dontwarn com.doctor.aistring.**
+-keep class javax.crypto.** { *; }
+-keep class java.security.** { *; }
+-keep class java.util.concurrent.** { *; }
+-keep class android.security.** { *; }
+-keep class androidx.security.** { *; }
