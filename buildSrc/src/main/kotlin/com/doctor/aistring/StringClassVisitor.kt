@@ -55,6 +55,6 @@ class StringClassVisitor(
         if (mv == null || className == "com/doctor/aistring/AiString") {
             return mv
         }
-        return StringMethodVisitor(mv, encryptor, key)
+        return StringMethodVisitor(mv, encryptor, key, access, name ?: "", descriptor ?: "")
     }
 }

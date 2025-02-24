@@ -13,3 +13,22 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# BuildSrc
+buildSrc/build/
+buildSrc/.gradle/
+buildSrc/bin/
+
+# IDE files
+.idea/
+.vscode/
+
+# Gradle files
+.gradle/
+build/
+
+# Runtime build files
+runtime/build/
+
+# Release files
+app/release/

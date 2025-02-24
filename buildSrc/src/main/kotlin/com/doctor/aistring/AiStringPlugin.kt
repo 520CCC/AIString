@@ -17,7 +17,7 @@ class AiStringPlugin : Plugin<Project> {
             project.afterEvaluate {
                 project.dependencies.add(
                     "implementation",
-                    "com.github.yourusername:aistring-runtime:${project.version}"
+                    project.project(":runtime")
                 )
             }
             
