@@ -3,7 +3,7 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' }
+        maven { url = uri("https://jitpack.io") }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:8.2.0'
@@ -17,13 +17,18 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'com.github.doctorgero'
-version = '1.0.0'
+allprojects {
+    group = 'com.github.520CCC'
+    version = '1.0.0'
+}
 
 publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
+            groupId = 'com.github.520CCC'
+            artifactId = 'aistring-plugin'
+            version = '1.0.0'
         }
     }
 }
@@ -31,7 +36,7 @@ publishing {
 gradlePlugin {
     plugins {
         aiStringPlugin {
-            id = 'com.github.doctorgero.aistring'
+            id = 'com.github.520CCC.aistring'
             implementationClass = 'com.doctor.aistring.AiStringPlugin'
         }
     }

@@ -17,7 +17,7 @@ dependencyResolutionManagement {
 2. 在应用模块的 `build.gradle` 中添加：
 ```groovy
 plugins {
-    id 'com.github.doctorgero.aistring' version '1.0.0'
+    id 'com.github.520CCC.aistring' version '1.0.0'
 }
 ```
 

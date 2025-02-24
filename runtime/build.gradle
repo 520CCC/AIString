@@ -4,32 +4,22 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'com.github.doctorgero'
+group = 'com.github.520CCC'
 version = '1.0.0'
 
 android {
-    namespace 'com.doctor.aistring'
+    namespace 'com.doctor.aistring.runtime'
     compileSdk 34
 
     defaultConfig {
-        minSdk 24
+        minSdk 21
         targetSdk 34
     }
 
     buildTypes {
         release {
-            minifyEnabled true
-
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            consumerProguardFiles 'proguard-rules.pro'
-            debuggable false
-        }
-        debug {
-            minifyEnabled true
-
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            consumerProguardFiles 'proguard-rules.pro'
-            debuggable true
         }
     }
 
@@ -79,7 +69,7 @@ afterEvaluate {
         publications {
             release(MavenPublication) {
                 from components.release
-                groupId = 'com.github.doctorgero'
+                groupId = 'com.github.520CCC'
                 artifactId = 'aistring-runtime'
                 version = '1.0.0'
             }
