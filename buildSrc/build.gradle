@@ -1,0 +1,33 @@
+plugins {
+    id 'java-gradle-plugin'
+}
+
+// 添加仓库配置
+repositories {
+    gradlePluginPortal()
+    mavenCentral()
+    google()
+}
+
+dependencies {
+    // 添加 Android Gradle Plugin 依赖
+    implementation "com.android.tools.build:gradle:8.2.0"
+    // 添加 ASM 依赖
+    implementation "org.ow2.asm:asm:9.6"
+    implementation "org.ow2.asm:asm-commons:9.6"
+
+}
+
+//java {
+//    sourceCompatibility = JavaVersion.VERSION_11
+//    targetCompatibility = JavaVersion.VERSION_11
+//}
+
+gradlePlugin {
+    plugins {
+        aiStringPlugin {
+            id = 'com.doctor.aistring'
+            implementationClass = 'com.doctor.aistring.AiStringPlugin'
+        }
+    }
+}
