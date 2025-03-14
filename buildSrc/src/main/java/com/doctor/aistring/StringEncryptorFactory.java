@@ -6,16 +6,19 @@ import com.android.build.api.instrumentation.ClassData;
 
 import org.objectweb.asm.ClassVisitor;
 
+import java.util.Collections;
+import java.util.List;
+
 public abstract class StringEncryptorFactory implements AsmClassVisitorFactory<AiStringPlugin.StringEncryptParams> {
 
     @Override
     public ClassVisitor createClassVisitor(ClassContext classContext, ClassVisitor nextClassVisitor) {
-        // 使用 getOrElse(null) 来避免空值问题
         AiStringPlugin.StringEncryptParams params = getParameters().getOrElse(null);
         if (params != null) {
-            String key = params.getKey().getOrElse(null);  // 获取 Key，避免空值
+            String key = params.getKey().getOrElse(null);
+            List<String> targetPackages = params.getTargetPackages().getOrElse(Collections.emptyList());
             StringEncryptor encryptor = new StringEncryptor();
-            return new StringClassVisitor(nextClassVisitor, encryptor, key);
+            return new StringClassVisitor(nextClassVisitor, encryptor, key, targetPackages);
         } else {
             throw new IllegalStateException("Instrumentation parameters not found!");
         }

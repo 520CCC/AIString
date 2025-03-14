@@ -7,18 +7,20 @@ import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.commons.AdviceAdapter;
 
 import java.util.Base64;
+import java.util.List;
 
 public class StringMethodVisitor extends AdviceAdapter {
     private final StringEncryptor encryptor;
     private final String key;
-//    private final String methodName;
     private final String className;
+    private final List<String> targetPackages;
     private static final Logger logger = Logging.getLogger(StringMethodVisitor.class);
 
     public StringMethodVisitor(
             MethodVisitor methodVisitor,
             StringEncryptor encryptor,
             String key,
+            List<String> targetPackages,
             int access,
             String name,
             String descriptor,
@@ -27,7 +29,7 @@ public class StringMethodVisitor extends AdviceAdapter {
         super(Opcodes.ASM9, methodVisitor, access, name, descriptor);
         this.encryptor = encryptor;
         this.key = key;
-//        this.methodName = name;
+        this.targetPackages = targetPackages;
         this.className = className;
     }
 
@@ -35,10 +37,13 @@ public class StringMethodVisitor extends AdviceAdapter {
         if (value == null || value.isEmpty()) {
             return false;
         }
-        if (this.className != null && this.className.contains("com/doctor/aistring/AiString")) {
-            return false;
+        
+        // 只加密指定包名下的代码
+        if (this.className != null && targetPackages != null) {
+            return targetPackages.stream().anyMatch(pkg -> this.className.contains(pkg));
         }
-        return true;
+        
+        return false;
     }
 
     private String encryptString(String value) {

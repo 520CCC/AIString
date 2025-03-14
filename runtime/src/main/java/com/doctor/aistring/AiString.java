@@ -17,7 +17,7 @@ public class AiString {
     private static final String algorithm = "AES/ECB/PKCS5Padding";
 
     @Keep
-    private static final String KEY = "bbe49aed57ef51b5d8910839a544cafc84251fae3082f62e4d01f693f832a10c";
+    private static final String KEY = "cc4ee3123e7f31422cfcee4af92aaff5d69be7cb7a0cd3002b5794e1d8357e10";
 
     @Keep
     private static final ConcurrentHashMap<String, String> decryptCache = new ConcurrentHashMap<>();

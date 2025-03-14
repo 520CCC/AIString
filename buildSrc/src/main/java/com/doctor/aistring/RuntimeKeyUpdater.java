@@ -21,7 +21,7 @@ public class RuntimeKeyUpdater {
 
                 // 写回文件
                 Files.writeString(aiStringFile.toPath(), content, StandardCharsets.UTF_8, StandardOpenOption.TRUNCATE_EXISTING);
-                System.out.println("成功替换密钥: " + key);
+//                System.out.println("成功替换密钥: " + key);
             } catch (Exception e) {
                 e.printStackTrace();
             }
